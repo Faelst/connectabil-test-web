@@ -2,7 +2,8 @@ import axios from 'axios';
 import { Company, Job } from './interfaces';
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:3333',
+  baseURL:
+    process.env.API_BASE_URL || 'https://connectabil-test-api.herokuapp.com',
 });
 
 api.interceptors.response.use(
