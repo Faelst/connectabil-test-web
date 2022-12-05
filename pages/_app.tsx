@@ -1,6 +1,16 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import { CompaniesProvider } from '../contexts/CompaniesContext';
+import { JobsProvider } from '../contexts/JobsContext';
+import ThemeContainer from '../contexts/theme/ThemeContainer';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeContainer>
+      <CompaniesProvider>
+        <JobsProvider>
+          <Component {...pageProps} />
+        </JobsProvider>
+      </CompaniesProvider>
+    </ThemeContainer>
+  );
 }
